@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib> 
+#include <sstream>
 #include <ctime>
 #include <algorithm>
 using namespace std;
@@ -23,12 +24,14 @@ void input() {
 		letters.push_back(i);
 }
 
-void generator()
-{
-	ofstream file("text.txt");
+void generator(){	
 	int i;
+	stringstream ss;
 	string s;
-	srand(time(0));
+	srand(0);
+	ss << "text" << countWords << '(' << countLetters << ").txt";
+	s = ss.str();
+	ofstream file(s);
 	for (int j = 0; j < countWords;){
 		i = rand() % (letters.size());
 		s = letters[i];
